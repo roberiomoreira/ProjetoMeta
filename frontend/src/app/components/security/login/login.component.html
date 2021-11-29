@@ -1,0 +1,82 @@
+<div class="col-md-6 offset-md-3 mt-5">
+  <!--<div class="alert alert-info">
+      Username: test<br />
+      Password: test
+  </div>-->
+  <div class="card">
+      <h4 class="card-header">Sistema Meta</h4>
+      <div class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <!--para o formGroup funcionar foi necessário importar
+            no login.component o ReactiveFormsModule e no arquivo module.ts foi necessário adicionar
+            também nos importes do NgModule-->
+              <div class="form-group">
+                  <label for="username">Email</label>
+                  <input type="email" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                  <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">Usuário é requerido</div>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="password">Senha</label>
+                  <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">Senha é requerida</div>
+                  </div>
+              </div>
+              <button [disabled]="loading" class="btn btn-primary">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                  Login
+              </button>
+              <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="col-md-4" style="margin-left: 35%;">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Projeto Meta | Login</h3>
+        </div>
+        <form class="form-horizontal" #form="ngForm" (ngSubmit)="login()">
+            <div class="alert alert-error" role="alert" *ngIf="message">
+                <string>Email ou senha inválidos</string>
+            </div>
+            <div class="box-body">
+                <div [ngClass]="getFromGroupClass(email.invalid, email.dirty)">
+                    <div class="col-sm-10">
+                        <input type="email" [(ngModel)]="user.username" name="email" class="form-control" #email="ngModel" id="inputEmail3" placeholder="Email " email>
+                        <span class="help-block" *ngIf="email.invalid && email.dirty"> Email is invalid</span>
+                    </div>
+                </div>
+                <div [ngClass]="getFromGroupClass(password.invalid, password.dirty)">
+                    <div class="col-sm-10">
+                        <input type="password" [(ngModel)]="user.senha" name="password" class="form-control" #password="ngModel" id="inputPassword" placeholder="Password" minlength="3" required>
+                        <span class="help-block" *ngIf="password.invalid && password.dirty"> Senha requer no mínimo 3 caracteres</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer ">
+                <button type="submit " (click)="cancelLogin()" class="btn btn-default ">Cancelar</button>
+                <button type="submit " [disabled]="!form.valid" class="btn btn-info pull-right ">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+-->

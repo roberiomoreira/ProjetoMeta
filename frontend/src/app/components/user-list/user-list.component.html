@@ -1,0 +1,37 @@
+<div class="alert alert-success" role="alert" *ngIf="message">
+    <string>{{message.text}}</string>
+</div>
+<div class="row">
+    <div class="col-md-10">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">User List</h3>
+            </div>
+            <div class="box-body">
+                <table class="table">
+                    <tr>
+                        <th style="width: 10px" scope="col">#</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Profile</th>
+                        <th style="width: 10px" scope="col">Editar</th>
+                        <th style="width: 10px" scope="col">Deletar</th>
+                    </tr>
+                    <tr *ngFor="let user of listUser; let i=index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.profile }}</td>
+                        <td><button class="btn btn-primary" (click)="edit(user.id)">Edit</button></td>
+                        <td><button class="btn btn-danger" (click)="delete(user.id)">Delete</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="" (click)="setPreviousPage($event)">&laquo;</a></li>
+                    <li *ngFor="let p of pages; let i=index">
+                        <a [ngClass]="{'pagination-focus' : i == page}" href="" (click)="setPage(i, $event)">{{i+1}}</a>
+                    </li>
+                    <li><a href="" (click)="setNextPage($event)">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>

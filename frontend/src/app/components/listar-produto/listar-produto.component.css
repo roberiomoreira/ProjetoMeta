@@ -1,0 +1,15 @@
+.logado{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  height: 80px;
+  background-color:#786aca;
+  border:none;
+  color:white;
+  font-size:20px;
+  box-shadow: 0 10px 30px 0 #2a318f;
+  border-radius:5px 5px 5px 5px;
+  width:95%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:20px auto;
+  }

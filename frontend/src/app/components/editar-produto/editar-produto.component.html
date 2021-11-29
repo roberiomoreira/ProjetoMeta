@@ -1,0 +1,40 @@
+<div class="col-md-8" style="margin-left: 0%;">
+  <div class="box box-info">
+      <div class="box-header with-border">
+          <h3 class="box-title"><p>Editar produto</p></h3>
+      </div>
+      <form class="form-horizontal" #form="ngForm" (ngSubmit)="cadastrar(form)">
+          <div class="alert alert-success" role="alert" *ngIf="message">
+              <string>{{message.text}}</string>
+          </div>
+          <div class="box-body">
+              <div [ngClass]="getFromGroupClass(nome.invalid, nome.dirty)">
+                  <label for="inputProfile" class="col-sm-2 control-label">Id</label>
+                  <div class="col-sm-10">
+                      <input type="text" [(ngModel)]="produto.id" name="id" class="form-control" #id="ngModel" id="inputIdProduto" placeholder="Id" disabled id>
+                      <span class="help-block" *ngIf="nome.invalid && nome.dirty"> Nome do produto inválido</span>
+                  </div>
+              </div>
+              <div [ngClass]="getFromGroupClass(nome.invalid, nome.dirty)">
+                  <label for="inputProfile" class="col-sm-2 control-label">Produto</label>
+                  <div class="col-sm-10">
+                      <input type="text" [(ngModel)]="produto.nome" name="nome" class="form-control" #nome="ngModel" id="inputNomeProduto" placeholder="Nome do Produto " nome>
+                      <span class="help-block" *ngIf="nome.invalid && nome.dirty"> Nome do produto inválido</span>
+                  </div>
+              </div>
+              <div [ngClass]="getFromGroupClass(preco.invalid, preco.dirty)">
+                  <label for="inputSenha" class="col-sm-2 control-label">Senha</label>
+                  <div class="col-sm-10">
+                      <input type="senha" [(ngModel)]="produto.preco" name="preco" class="form-control" #preco="ngModel" id="inputPreco" placeholder="Valor do Produto">
+                      <span class="help-block" *ngIf="preco.invalid && preco.dirty"> Preco Invalido</span>
+                  </div>
+              </div>
+          </div>
+          <div class="box-footer ">
+              <button type="submit "  class="btn btn-info ">Salvar</button>
+              <button type="submit "  class="btn btn-danger pull-right " (click)="cancelar()">Cancelar</button>
+          </div>
+      </form>
+
+  </div>
+</div>

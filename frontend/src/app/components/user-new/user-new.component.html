@@ -1,0 +1,43 @@
+<div class="col-md-8" style="margin-left: 0%;">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">New User</h3>
+        </div>
+        <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()">
+            <div class="alert alert-success" role="alert" *ngIf="message">
+                <string>{{message.text}}</string>
+            </div>
+            <div class="box-body">
+                <div [ngClass]="getFromGroupClass(username.invalid, username.dirty)">
+                    <label for="inputProfile" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" [(ngModel)]="user.username" name="username" class="form-control" #username="ngModel" id="inputEmail3" placeholder="Email " email>
+                        <span class="help-block" *ngIf="username.invalid && username.dirty"> Email inválido</span>
+                    </div>
+                </div>
+                <div [ngClass]="getFromGroupClass(senha.invalid, senha.dirty)">
+                    <label for="inputSenha" class="col-sm-2 control-label">Senha</label>
+                    <div class="col-sm-10">
+                        <input type="senha" [(ngModel)]="user.senha" name="senha" class="form-control" #senha="ngModel" id="inputSenha" placeholder="Senha" minlength="6" required>
+                        <span class="help-block" *ngIf="senha.invalid && senha.dirty"> Senha is required and 6 characters</span>
+                    </div>
+                </div>
+                <div [ngClass]="getFromGroupClass(profile.invalid, profile.dirty)">
+                    <label for="inputProfile" class="col-sm-2 control-label">Profile</label>
+                    <div class="col-sm-10">
+                        <select [(ngModel)]="user.authorities" name="profile" class="form-control" #profile="ngModel" id="inputProfile" required>
+                            <option value="">- Profile -</option>
+                            <option value="ROLE_ADMIN">ADMIN</option>
+                            <option value="ROLE_CUSTOMER">CUSTOMER</option>
+                            <option value="ROLE_TECHNICIAN">TECHNICIAN</option>
+                        </select>
+                        <span class="help-block" *ngIf="profile.invalid && profile.dirty"> Profile is required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer ">
+                <button type="submit " [disabled]="!form.valid" class="btn btn-info pull-right ">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
